@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>BookStore DataBase</h2>
+
+<table border="1">
+    <tr bgcolor="lightgrey">
+        <th>Name of book</th>
+        <th>Price of book</th>
+        <th>Genre of book</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </tr>
+    @{
+        if (ViewBag.books.collection != null)
+        {
+            foreach (KeyValuePair<string, Book> kvp in ViewBag.books.collection)
+            {
+                <tr>
+                    <td>@kvp.Key</td>
+                    <td>@kvp.Value.price</td>
+                    <td>@kvp.Value.genre</td>
+                    <td>
+                        <form method="get" action="~/Bookstore/Edit">
+                            <input type="hidden" name="name" value="@kvp.Key" />
+                            <input type="submit" value="Edit" />
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="~/Bookstore/Delete">
+                            <input type="hidden" name="name" value="@kvp.Key" />
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" action="~/ShoppingCart/Add">
+                            <input type="hidden" name="name" value="@kvp.Key" />
+                            <input size="3" type="text" name="count" value="1" />
+                            <input type="submit" value="Dodaj u korpu" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
+
+<br /><hr />
+<a href="~/Bookstore/Index">Home Page</a>

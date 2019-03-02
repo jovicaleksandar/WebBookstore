@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+
+<form method="post" action="~/Bookstore/Add">
+    <table cellpadding="4" border="1">
+        <tr bgcolor="lightgrey">
+            <th style="text-align:center" colspan="3"> Add new book </th>
+        </tr>
+        <tr>
+            <th bgcolor="lightgrey">Name of book</th>
+            <td colspan="2"><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+            <th bgcolor="lightgrey">Price of book</th>
+            <td colspan="2"><input type="number" name="price" /></td>
+        </tr>
+        <tr>
+            <th bgcolor="lightgrey">Genre of book</th>
+            <td colspan="2">
+                <select style="width:100%" name="genre">
+                    @{
+                        foreach (string s in ViewBag.books.genres)
+                        {
+                            <option value="@s">@s</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr bgcolor="lightgrey">
+            <td colspan="3" style="text-align:center"><input type="submit" value="Dodaj!" /></td>
+        </tr>
+    </table>
+</form>
+
+<br /><hr />
+<a href="~/Bookstore/Index">Home Page</a>

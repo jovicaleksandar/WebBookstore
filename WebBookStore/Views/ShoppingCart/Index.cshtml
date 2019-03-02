@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Knjige u korpi</h2>
+
+<br /><hr />
+
+<table cellpadding="4" border="1">
+    <tr bgcolor="lightgrey"><th>Name</th><th>Price</th><th>Genre</th><th>Count</th><th>Total</th></tr>
+    @{
+        foreach (ShoppingCartItem sci in ViewBag.cart.items)
+        {
+            <tr>
+                <td>@sci.book.name</td>
+                <td>@sci.book.price</td>
+                <td>@sci.book.genre</td>
+                <td>@sci.count</td>
+                <td>@sci.total</td>
+            </tr>
+        }
+    }
+</table>
+
+<br /><hr />
+<p>Ukupno: @ViewBag.cart.Total</p>
+
+
+<br /><hr />
+<p>
+    <a href="~/Bookstore/List">Povratak</a>
+</p>

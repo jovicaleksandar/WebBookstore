@@ -1,0 +1,44 @@
+﻿@model Book
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method="post" action="~/Bookstore/Edit">
+    <table cellpadding="4" border="1">
+        <tr bgcolor="lightgrey">
+            <th style="text-align:center" colspan="3"> Add new book </th>
+        </tr>
+        <tr>
+            <th bgcolor="lightgrey">Name of book</th>
+            <td colspan="2"><input type="text" name="name" value="@Model.name" /><input type="text" name="key" value="@Model.name" hidden/></td>
+        </tr>
+        <tr>
+            <th bgcolor="lightgrey">Price of book</th>
+            <td colspan="2"><input type="number" name="price" value="@Model.price" /></td>
+        </tr>
+        <tr>
+            <th bgcolor="lightgrey">Genre of book</th>
+            <td colspan="2">
+                <select style="width:100%" name="genre" selected="@Model.genre">
+                    <option value="@Model.genre">@Model.genre</option>
+                    @{
+                        foreach (string s in ViewBag.books.genres)
+                        {
+                            if (s != Model.genre)
+                            {
+                                <option value="@s">@s</option>
+                            }
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr bgcolor="lightgrey">
+            <td colspan="3" style="text-align:center"><input type="submit" value="Edit!" /></td>
+        </tr>
+    </table>
+</form>
+
